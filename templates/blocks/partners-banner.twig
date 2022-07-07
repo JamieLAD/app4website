@@ -1,0 +1,7 @@
+<section id="partners" class="-z-1 -mt-40 bg-secondary-700 px-14 pt-64 pb-24 lg:pt-56 lg:pb-16 sm:px-8 sm:pt-52 sm:pb-12">
+   <div class="mx-auto flex max-w-5xl items-center justify-between space-x-4">
+		{% for image in fields.partners_banner_logos %}
+			<img src="{{Image(image).src}}" alt="" class="lg:w-36 md:w-1/5 {% if loop.index == 4 %}sm:hidden{% endif %}"/>
+		{% endfor %}
+   </div>
+</section>

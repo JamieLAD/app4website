@@ -1,0 +1,7 @@
+{% if fields.hero_type == 'Form' %}
+{% include 'heros/hero-form.twig' %}
+{% elseif fields.hero_type == 'Image Grid (White Background)' %}
+{% include 'heros/hero-grid.twig' %}
+{% else %}
+{% include 'heros/hero-video.twig' %}
+{% endif %}

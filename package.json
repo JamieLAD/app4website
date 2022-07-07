@@ -1,0 +1,44 @@
+{
+  "name": "app4-website",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build:css": "postcss ./src/style.css -o ./style.css",
+    "build:js": "webpack",
+    "prod": "set NODE_ENV=production postcss ./src/style.css -o ./public/style.css"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamieApp4/app4-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamieApp4/app4-website/issues"
+  },
+  "homepage": "https://github.com/JamieApp4/app4-website#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@tailwindcss/line-clamp": "^0.4.0",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.11",
+    "prettier-plugin-twig-melody": "^0.4.6",
+    "tailwindcss": "^3.1.2",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "gsap": "^3.10.4",
+    "postcss-cli": "^9.1.0"
+  }
+}

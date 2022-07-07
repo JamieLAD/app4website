@@ -1,0 +1,60 @@
+<section id="features" class="py-32 px-14 lg:py-16 sm:px-8">
+   <div class="mx-auto max-w-5xl">
+      <div class="grid grid-cols-2 items-center border-b border-neutral-200 pb-16 md:flex md:flex-col">
+
+         {% if fields.features_grid_title %}
+         <h2 class="text-5xl font-bold tracking-tighter text-primary-900">
+            {{fields.features_grid_title}}
+         </h2>
+         {% endif %}
+
+         {% if fields.features_grid_text %}
+         <p class="pl-20 text-xl lg:pl-14 md:pt-6 md:pl-0 sm:pt-4">
+            {{fields.features_grid_text}}
+         </p>
+         {% endif %}
+
+      </div>
+
+      {% if fields.features_grid_items %}
+      <div class="mt-12 grid grid-cols-3 items-start md:grid-cols-2 sm:flex sm:flex-col">
+         <div class="pr-4 md:col-span-2 md:mb-10 md:grid md:grid-cols-2 md:border-b md:border-neutral-200 md:pb-10 md:pr-0">
+            {% if fields.features_grid_stats %}
+               {% for stat in fields.features_grid_stats %}
+                  <div
+                     class="{% if loop.index == 1%}border-b border-neutral-200 pb-12 md:border-b-0 md:border-r md:pb-0 md:pr-12{% else %}pt-12 md:pt-0 md:pl-12{% endif %}">
+                     <h4 class="mb-2 text-5xl font-bold text-primary-900">{{stat.features_grid_stats_figure}}</h4>
+                     <p class="text-xl">{{stat.features_grid_stats_title}}</p>
+                  </div>
+               {% endfor %}
+            {% endif %}
+         </div>
+
+         {% for items in fields.features_grid_items|batch(2) %}
+            <div class="border-l border-neutral-200 p-12 lg:p-8 sm:border-0 sm:p-0">
+               {% for item in items %}
+                  <div class="mb-16 flex flex-col items-start lg:mb-12 sm:mb-8 sm:rounded-md sm:border sm:border-neutral-200 sm:p-8">
+                     {% if item.features_grid_item_icon %}
+                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-700">
+                           <img src="{{Image(item.features_grid_item_icon).src}}" alt=""/>
+                        </div>
+                     {% endif %}
+                     {% if item.features_grid_item_title %}
+                        <h4 class="mt-8 mb-2 text-2xl font-bold">{{item.features_grid_item_title}}</h4>
+                     {% endif %}
+                     {% if item.features_grid_item_summary %}
+                        <p class="mb-8">{{item.features_grid_item_summary}}</p>
+                     {% endif %}
+                     {% if item.features_grid_item_button %}
+                        <a href="{{item.features_grid_item_button.url}}" target="item.features_grid_item_button.target" class="inline-block rounded border border-neutral-200 py-2 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+                           {{item.features_grid_item_button.title}}
+                        </a>
+                     {% endif %}
+                  </div>
+               {% endfor %}
+            </div>
+         {% endfor %}
+      </div>
+      {% endif %}
+   </div>
+</section>

@@ -1,0 +1,65 @@
+<section id="contact" class="-mt-40 bg-white px-8 pt-80 pb-24 lg:pt-64 lg:pb-16">
+   <div class="mx-auto max-w-5xl">
+
+      {% if fields.contact_grid_badge %}
+         <div class="mb-4 flex justify-center">
+               <h6 class="rounded bg-secondary-700 py-2 px-4 text-lg font-bold uppercase tracking-tighter text-primary-900">{{fields.contact_grid_badge}}</h6>
+         </div>
+      {% endif %}
+
+      {% if fields.contact_grid_title %}
+         <h2 class="mx-auto mb-16 max-w-lg text-center text-5xl font-bold tracking-tighter text-primary-900 sm:mb-10">{{fields.contact_grid_title}}</h2>
+      {% endif %}
+
+      {% if options.phone or options.email or options.opening_times_short %}
+         <div class="flex items-start gap-12 lg:gap-6 md:flex-col md:items-center">
+
+            {% if options.phone %}
+               <div class="mt-6 flex-1 rounded-md border border-neutral-200 p-8 lg:p-6 md:mt-0 md:w-full">
+                  <div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-700">
+                     <ion-icon name="call-outline" class="text-xl text-primary-900"></ion-icon>
+                  </div>
+                  <h3 class="mb-3 text-2xl">Contact via Phone</h3>
+                  <p class="mb-8">
+                     If you'd prefer to call us directly, feel free to call us by clicking 'call us' below.
+                  </p>
+                  <a href="tel: {{options.phone}}" class="inline-block rounded border border-neutral-200 py-2 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+                     Call Us
+                  </a>
+               </div>
+            {% endif %}
+
+            {% if options.email %}
+            <div class="flex-1 rounded-md border border-neutral-200 p-8 lg:p-6 md:w-full">
+               <div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-700">
+                  <ion-icon name="mail-outline" class="text-xl text-primary-900"></ion-icon>
+               </div>
+               <h3 class="mb-3 text-2xl">Contact via Email</h3>
+               <p class="mb-8">
+                  If you'd prefer to call us directly, feel free to call us by clicking 'email us' below.
+               </p>
+               <a href="mailto:{{options.email}}" class="inline-block rounded border border-neutral-200 py-2 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+                  Email Us
+               </a>
+            </div>
+            {% endif %}
+
+            {% if options.opening_times_short %}
+            <div class="mt-6 flex-1 rounded-md border border-neutral-200 p-8 lg:p-6 md:mt-0 md:w-full">
+               <div class="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-700">
+                  <ion-icon name="location-outline" class="text-xl text-primary-900"></ion-icon>
+               </div>
+               <h3 class="mb-3 text-2xl">See where we are</h3>
+               <p class="mb-8">
+                  Our office is open {{options.opening_times_short}}. See where we are by clicking 'find us'
+               </p>
+               <a href="https://g.page/app4uk?share" class="inline-block rounded border border-neutral-200 py-2 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+                  Find Us
+               </a>
+            </div>
+            {% endif %}
+
+         </div>
+      {% endif %}
+   </div>
+</section>

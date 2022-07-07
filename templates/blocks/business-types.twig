@@ -1,0 +1,49 @@
+<section id="business-types" class="-z-1 -mt-40 bg-white px-14 pt-80 pb-32 lg:pt-52 lg:pb-20 sm:px-8">
+	{% if fields.business_types_title or fields.business_types_text %}
+		<div class="mx-auto mb-16 grid max-w-5xl grid-cols-2 items-center md:flex md:flex-col">
+			{% if fields.business_types_title %}
+			<h2 class="text-5xl font-bold tracking-tighter text-primary-900">
+				{{fields.business_types_title}}
+			</h2>
+			{% endif %}
+			{% if fields.business_types_text %}
+			<p class="pl-20 text-xl lg:pl-14 md:pl-0 md:pt-6 sm:pt-4">
+				{{fields.business_types_text}}
+			</p>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{% if fields.business_type_items %}
+	{% set items = fields.business_type_items %}
+	{% set size = items|length %}
+   <div class="mx-auto grid max-w-5xl {% if size < 4 %}grid-cols-{{size}}{% else %}grid-cols-4{% endif %} items-start gap-6 lg:grid-cols-2 sm:flex sm:flex-col">
+
+		{% for item in items %}
+			<div class="flex flex-col items-start rounded-md border border-neutral-200 p-6">
+				{% if item.icon %}
+					<div class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-700">
+						<img src="{{Image(item.icon).src}}" alt="" />
+					</div>
+				{% endif %}
+				
+				{% if item.title %}
+					<h4 class="mt-8 mb-2 text-2xl font-bold">{{item.title}}</h4>
+				{% endif %}
+
+				{% if item.text %}
+					<p class="mb-10">{{item.text}}</p>
+				{% endif %}
+
+				{% if item.button %}
+					<a href="{{item.button.src}}" target="{{item.button.target}}" class="inline-block rounded border border-neutral-200 py-2 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+						{{item.button.title}}
+					</a>
+				{% endif %}
+
+			</div>
+		{% endfor %}
+
+   </div>
+	{% endif %}
+</section>

@@ -1,0 +1,18 @@
+<section id="call-to-action" class="px-6 sm:p-0">
+   <div class="mx-auto max-w-7xl rounded bg-secondary-700 py-20 px-8 lg:py-16 sm:rounded-none">
+		{% if fields.call_to_action_title %}
+      <h2 class="mx-auto mb-8 max-w-lg text-center text-5xl font-bold tracking-tighter text-primary-900 sm:text-4xl">
+         {{fields.call_to_action_title}}
+      </h2>
+		{% endif %}
+		{% if fields.call_to_action_buttons %}
+      <div class="flex items-center justify-center space-x-4">
+			{% for button in fields.call_to_action_buttons %}
+			<a href="{{button.call_to_action_button.url}}" target="{{button.call_to_action_button.target}}" class="inline-block rounded py-2 px-5 {% if loop.index == 1%}border border-primary-900 bg-primary-900 text-white{% else %}text-primary-900{% endif %}">
+            {{button.call_to_action_button.title}}
+         </a>
+			{% endfor %}
+      </div>
+		{% endif %}
+   </div>
+</section>

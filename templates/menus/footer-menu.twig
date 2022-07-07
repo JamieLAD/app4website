@@ -1,0 +1,20 @@
+{% if items %}
+   {% for item in items|slice(0, 1) %}
+      {% if item.children %}
+         {% for child in item.children %}
+            <div class="flex flex-col items-start">
+               <h6 class="mb-6 font-bold">{{child.title}}</h6>
+               <nav class="flex flex-col items-start space-y-3">
+                  {% if child.children %}
+                     {% for third in child.children %}
+                        <a href="{{third.link}}" target="{{third.target}}" class="font-normal text-white opacity-50 transition-opacity hover:opacity-100">
+                           {{third.title}}
+                        </a>
+                     {% endfor %}
+                  {% endif %}
+               </nav>
+            </div>
+         {% endfor %}
+      {% endif %}
+   {% endfor %}
+{% endif %}

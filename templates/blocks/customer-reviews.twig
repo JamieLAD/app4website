@@ -1,0 +1,41 @@
+<section id="reviews" class="py-32 px-14 lg:py-16 sm:px-8">
+   <div class="mx-auto max-w-5xl">
+
+      {% if fields.customer_reviews_badge %}
+         <div class="mb-4 flex justify-center">
+            <h6 class="rounded bg-secondary-700 py-2 px-4 text-lg font-bold uppercase tracking-tighter text-primary-900">{{fields.customer_reviews_badge}}</h6>
+         </div>
+      {% endif %}
+
+      {% if fields.customer_reviews_title %}
+         <h2 class="mx-auto mb-16 max-w-lg text-center text-5xl font-bold tracking-tighter text-primary-900 sm:mb-10">{{fields.customer_reviews_title}}</h2>
+      {% endif %}
+
+      {% if fields.customer_reviews_items %}
+         <div class="flex items-start gap-12 lg:gap-6 md:flex-col md:items-center">
+
+            {% for review in fields.customer_reviews_items %}
+               <article class="flex-1 rounded-md border border-neutral-200 md:w-full transition-transform duration-300 hover:-translate-y-2{% if loop.first or loop.last %} mt-6 md:mt-0{% endif %}">
+                  <a href="{{review.link}}" class="block p-8 lg:p-6">
+                  {% if review.avatar %}<img src="{{Image(review.avatar).src}}" alt="" class="w-16 h-16 rounded-full object-cover mb-6 inline-block">{% endif %}
+                  {% if review.review %}<p class="font-bold text-xl mb-6 line-clamp-3">{{review.review}}</p>{% endif %}
+                  {% if review.name %}<div class="text-lg">{{review.name}}</div>{% endif %}
+                  {% if review.business %}<div class="text-neutral-500 mb-6">{{review.business}}</div>{% endif %}
+                  {% if review.star_rating %}
+                     <div class="flex items-center space-x-1">
+                        {% set c = review.star_rating %}
+                        {% for i in range(1, c) %}
+                           <span class="w-6 h-6 inline-flex items-center justify-center bg-secondary-700">
+                              <ion-icon name="star" class="text-primary-900"></ion-icon>
+                           </span>
+                        {% endfor %}
+                     </div>
+                  {% endif %}
+                  </a>
+               </article>
+            {% endfor %}
+
+         </div>
+      {% endif %}
+   </div>
+</section>

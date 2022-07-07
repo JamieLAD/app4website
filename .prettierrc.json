@@ -1,0 +1,13 @@
+{
+  "bracketSameLine": true,
+  "singleQuote": true,
+  "twigPrintWidth": 80,
+
+  "twigMultiTags": [
+    "nav,endnav",
+    "switch,case,default,endswitch",
+    "ifchildren,endifchildren",
+    "cache,endcache",
+    "js,endjs"
+  ]
+}

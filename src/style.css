@@ -1,0 +1,125 @@
+/*
+ * Theme Name: App4 Developments Ltd
+ * Description: This theme was created for App4 Developments Ltd.
+ * Author: Jamie Tooth
+*/
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('http://localhost:10004/wp-content/uploads/2022/07/Satoshi-Variable.ttf')
+    format('truetype-variations');
+  font-weight: 1 999;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active > a > .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nf-form-title,
+.nf-before-form-content,
+.nf-after-form-content,
+.ninja-forms-req-symbol,
+#nf-form-2-cont .nf-form-content select.ninja-forms-field + div[for="nf-field-9"] {
+	display: none;
+}
+
+#nf-form-2-cont {
+	margin-top: 0px;
+}
+
+#nf-form-2-cont .nf-form-content {
+	padding: 0px;
+}
+
+#nf-form-2-cont .nf-field-container {
+	margin-bottom: 1.5rem;
+}
+
+#nf-form-2-cont .nf-field-container.submit-container {
+  margin: 0;
+}
+
+#nf-form-2-cont .nf-field-label {
+	margin-bottom: .5rem;
+}
+
+#nf-form-2-cont .nf-field-label label {
+	font-size: 1rem;
+	line-height: 100%;
+	font-weight: 500;
+	letter-spacing: -.015rem;
+	color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
+#nf-form-2-cont .field-wrap .nf-field-element:after {
+	content: none;
+}
+
+#nf-form-2-cont .nf-form-content input:not([type="button"]) {
+	background-color: transparent;
+	border-radius: .375rem;
+	border: 1px solid rgb(212 212 212);
+	padding: 0.75rem;
+	height: 3rem;
+	font-weight: normal;
+  transition: none;
+}
+
+#nf-form-2-cont .nf-form-content input[type="button"] {
+  background-color: #153C3C;
+  height: auto;
+  padding: .5rem 1.25rem;
+  border-radius: 0.25rem;
+  font-size: .875rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+#nf-form-2-cont .nf-form-content select.ninja-forms-field {
+  background-color: transparent;
+	border-radius: .375rem;
+	border: 1px solid rgb(212 212 212);
+	padding: 0.75rem;
+	height: 3rem;
+	font-weight: normal;
+  transition: none;
+  appearance: auto;
+  cursor: pointer;
+}
+
+#nf-form-2-cont .nf-pass .ninja-forms-field {
+	border-color: inherit !important;
+}
+
+#nf-form-2-cont .nf-form-content input:not([type="button"]):focus,
+#nf-form-2-cont .nf-form-content select.ninja-forms-field:focus {
+	--tw-border-opacity: 1;
+	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+	border-color: rgb(173 201 166 / var(--tw-border-opacity)) !important;
+	--tw-ring-opacity: 1;
+  --tw-ring-color: rgb(230 239 228 / var(--tw-ring-opacity));
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+	box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+#nf-form-2-cont .nf-error .ninja-forms-field  {
+  --tw-border-opacity: 1;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(254 202 202 / var(--tw-ring-opacity));
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+  border-color: rgb(252 165 165 / var(--tw-border-opacity)) !important;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.nf-error .nf-error-msg {
+  font-size: 0.875rem;
+}

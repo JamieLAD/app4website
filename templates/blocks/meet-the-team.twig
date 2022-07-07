@@ -1,0 +1,33 @@
+<section id="team" class="py-32 px-14 lg:py-16 sm:px-8">
+   <div class="mx-auto grid max-w-5xl place-items-center">
+
+		{% if fields.meet_the_team_badge %}
+      <h6 class="mb-6 rounded bg-secondary-700 py-2 px-4 text-lg font-bold uppercase tracking-tighter text-primary-900">
+         {{fields.meet_the_team_badge}}
+      </h6>
+		{% endif %}
+
+		{% if fields.meet_the_team_title %}
+      <h1 class="mb-16 max-w-3xl text-center text-7xl font-bold tracking-tighter text-primary-900 lg:text-6xl sm:mb-12 sm:text-5xl">
+         {{fields.meet_the_team_title}}
+      </h1>
+		{% endif %}
+
+		{% if fields.meet_the_team_items %}
+      <div class="grid w-full max-w-4xl grid-cols-2 gap-10 sm:grid-cols-1 sm:gap-6">
+			{% for person in fields.meet_the_team_items %}
+         <div class="flex items-center space-x-8 rounded-md border border-neutral-200 p-8 lg:space-x-6 lg:p-6 md:flex-col md:items-start md:space-y-6 md:space-x-0 sm:flex-row sm:items-center sm:space-x-6 sm:space-y-0">
+				{% if person.image %}<img src="{{Image(person.image).src}}" alt="" class="h-28 w-32 rounded object-cover"/>{% endif %}
+
+				{% if person.name or person.position %}
+            <div class="space-y-2">
+               {% if person.name %}<div class="text-3xl font-bold lg:text-2xl">{{person.name}}</div>{% endif %}
+               {% if person.position %}<div class="text-sm font-bold uppercase text-neutral-500">{{person.position}}</div>{% endif %}
+            </div>
+				{% endif %}
+         </div>
+			{% endfor %}
+      </div>
+		{% endif %}
+   </div>
+</section>
