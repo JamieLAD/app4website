@@ -1,70 +1,69 @@
-<section id="case-studies" class="py-32 px-14 lg:py-16 sm:px-8">
-	<div class="mx-auto max-w-5xl">
+<section class="py-32 px-14 lg:py-16 sm:px-8">
+   <div class="mx-auto max-w-5xl">
       {% for study in fields.case_studies %}
-		<div class="{% if not loop.last %}mb-40 {% endif %}grid grid-cols-2 items-center gap-x-32 lg:mb-28 lg:gap-x-16 md:mb-20 md:flex md:flex-col-reverse md:gap-y-14">
-         {% if study.case_study_image %}
-			<div class="relative w-full lg:h-full row-start-1 {% if loop.index is odd %}col-start-1{% endif %}{% if loop.index is even %}col-start-2{% endif %}">
-            <img src="{{Image(study.case_study_image).src}}" alt="" class="h-full w-full rounded-md object-cover md:aspect-square"/>
+         <div class="{% if not loop.last %}mb-40 lg:mb-28 md:mb-20 {% endif %}grid grid-cols-2 items-center gap-x-32 lg:gap-x-16 md:flex md:flex-col-reverse md:gap-y-14">
+            {% if study.case_study_image %}
+               <div class="relative w-full lg:h-full row-start-1 {% if loop.index is odd %}col-start-1{% endif %}{% if loop.index is even %}col-start-2{% endif %}">
+                  <img src="{{Image(study.case_study_image).src}}" alt="" class="h-full w-full rounded-md object-cover md:aspect-square"/>
 
-				{% if study.case_study_widget == 'Profit' %}
-					{% include 'widgets/widget-profit.twig' with {'props': study.case_study_profit} %}	
-				{% elseif study.case_study_widget == 'Comparison' %}
-					{% include 'widgets/widget-comparison.twig' with {'props': study.case_study_comparison} %}	
-				{% elseif study.case_study_widget == 'Bar Chart' %}
-					{% include 'widgets/widget-bars.twig' with {'props': study.case_study_bars} %}	
-				{% endif %}
+                  {% if study.case_study_widget == 'Profit' %}
+                     {% include 'widgets/widget-profit.twig' with {'props': study.case_study_profit} %}
+                  {% elseif study.case_study_widget == 'Comparison' %}
+                     {% include 'widgets/widget-comparison.twig' with {'props': study.case_study_comparison} %}
+                  {% elseif study.case_study_widget == 'Bar Chart' %}
+                     {% include 'widgets/widget-bars.twig' with {'props': study.case_study_bars} %}
+                  {% endif %}
 
-			</div>
-         {% endif %}
-			<div class="py-8 lg:py-4 md:py-0 row-start-1 {% if loop.index is odd %}col-start-2{% endif %}{% if loop.index is even %}col-start-1{% endif %}">
-
-            {% if study.case_study_title %}
-				<h2 class="mb-8 text-5xl font-bold tracking-tighter text-primary-900 lg:mb-6">
-					{{ study.case_study_title }}
-				</h2>
+               </div>
             {% endif %}
+            <div class="py-8 lg:py-4 md:py-0 row-start-1 {% if loop.index is odd %}col-start-2{% endif %}{% if loop.index is even %}col-start-1{% endif %}">
 
-            {% if study.case_study_title %}
-				<p class="mb-8 text-xl lg:mb-6 lg:text-lg">
-					{{ study.case_study_text }}
-				</p>
-            {% endif %}
+               {% if study.case_study_title %}
+                  <h2 class="mb-8 text-5xl font-bold tracking-tighter text-primary-900 lg:mb-6">
+                     {{ study.case_study_title }}
+                  </h2>
+               {% endif %}
 
-            {% if study.case_study_button %}
-				<a href="{{study.case_study_button.url}}" target="{{study.case_study_button.target}}" class="inline-block rounded border border-neutral-200 py-3 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
-					{{study.case_study_button.title}}
-				</a>
-            {% endif %}
+               {% if study.case_study_title %}
+                  <p class="mb-8 text-xl lg:mb-6 lg:text-lg">
+                     {{ study.case_study_text }}
+                  </p>
+               {% endif %}
 
-				{% if study.case_study_style == 'Stat Rows' %}
-					{% for item in study.case_study_rows %}
-						<div class="mt-16 mb-4 flex items-center lg:mt-8">
-							<h4
-								class="mr-5 box-content w-16 shrink-0 border-r border-neutral-200 pr-5 text-3xl font-bold tracking-tighter">
-								{{item.case_study_rows_figure}}
-							</h4>
-							<p>
-								{{item.case_study_rows_text}}
-							</p>
-						</div>
-					{% endfor %}
-				{% elseif study.case_study_style == 'Stat Icons' %}
-				<div class="mt-16 flex items-center justify-start space-x-5 lg:mt-8 lg:flex-col lg:items-start lg:space-y-5 lg:space-x-0">
-					{% for item in study.case_study_icons %}
-						<div class="flex items-center">
-							<div class="mr-5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary-700">
-								<img src="{{Image(item.case_study_icon_image).src}}" alt="" />
-							</div>
-							<div class="font-bold tracking-tighter">
-								{{item.case_study_icon_text}}
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-				{% endif %}
- 
-			</div>
-		</div>
+               {% if study.case_study_button %}
+                  <a href="{{study.case_study_button.url}}" target="{{study.case_study_button.target}}" class="inline-block rounded border border-neutral-200 py-3 px-8 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+                     {{study.case_study_button.title}}
+                  </a>
+               {% endif %}
+
+               {% if study.case_study_style == 'Stat Rows' %}
+                  {% for item in study.case_study_rows %}
+                     <div class="mt-16 mb-4 flex items-center lg:mt-8">
+                        <h4 class="mr-5 box-content w-16 shrink-0 border-r border-neutral-200 pr-5 text-3xl font-bold tracking-tighter">
+                           {{item.case_study_rows_figure}}
+                        </h4>
+                        <p>
+                           {{item.case_study_rows_text}}
+                        </p>
+                     </div>
+                  {% endfor %}
+               {% elseif study.case_study_style == 'Stat Icons' %}
+                  <div class="mt-16 flex items-center justify-start space-x-5 lg:mt-8 lg:flex-col lg:items-start lg:space-y-5 lg:space-x-0">
+                     {% for item in study.case_study_icons %}
+                        <div class="flex items-center">
+                           <div class="mr-5 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-secondary-700">
+                              <img src="{{Image(item.case_study_icon_image).src}}" alt=""/>
+                           </div>
+                           <div class="font-bold tracking-tighter">
+                              {{item.case_study_icon_text}}
+                           </div>
+                        </div>
+                     {% endfor %}
+                  </div>
+               {% endif %}
+
+            </div>
+         </div>
       {% endfor %}
-	</div>
+   </div>
 </section>

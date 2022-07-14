@@ -1,0 +1,44 @@
+<div id="savings-calculator" class="z-10 fixed left-1/2 bottom-32 max-h-0 -translate-x-1/2 overflow-hidden transition-all duration-300 w-full max-w-calculator">
+   <div class="rounded-md border p-6 bg-white">
+      <h4 class="mb-1 text-3xl font-bold tracking-tighter">
+         Calculate Savings
+      </h4>
+      <h6 class="block border-b border-gray-200 pb-6 text-sm font-bold uppercase text-neutral-400">
+         Save On Commission
+      </h6>
+      <div class="mt-6">
+         <div class="mb-3">
+            <div class="mb-1 flex items-center justify-between text-sm font-bold">
+               <label for="orders_per_month">Order Per Month</label>
+               <output id="orders_per_month_figure">500</output>
+            </div>
+            <input id="orders_per_month" type="range" min="250" value="500" max="1000" step="10" class="h-2 w-full cursor-pointer appearance-none bg-neutral-200 accent-secondary-900"/>
+         </div>
+         <div class="mb-3">
+            <div class="mb-1 flex items-center justify-between text-sm font-bold">
+               <label for="average_order_value">Average Order Value</label>
+               <output id="average_order_value_figure">£20</output>
+            </div>
+            <input id="average_order_value" type="range" min="15" value="20" max="40" step="1" class="h-2 w-full cursor-pointer appearance-none bg-neutral-200 accent-secondary-900"/>
+         </div>
+      </div>
+      <div class="mt-6 grid grid-cols-2 gap-2">
+         <div class="w-28 rounded bg-secondary-700 p-5 text-left">
+            <h6 class="text-3xl font-bold tracking-tighter" id="monthly_total">
+               £3k
+            </h6>
+            <p>Monthly</p>
+         </div>
+         <div class="w-28 rounded bg-secondary-700 p-5 text-left">
+            <h6 class="text-3xl font-bold tracking-tighter" id="annual_total">
+               £36k
+            </h6>
+            <p>Annually</p>
+         </div>
+      </div>
+   </div>
+</div>
+
+<button id="reveal-calculator" class="z-10 fixed bottom-12 left-1/2 inline-block -translate-x-1/2 rounded border border-secondary-800 bg-secondary-800 py-2 px-5 text-primary-900 shadow">
+   Calculate Savings
+</button>

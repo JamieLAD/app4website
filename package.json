@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "gsap": "^3.10.4",
-    "postcss-cli": "^9.1.0"
+    "postcss-cli": "^9.1.0",
+    "swiper": "^8.3.0"
   }
 }

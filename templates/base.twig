@@ -1,29 +1,33 @@
 {% block html_head_container %}
-	{% include 'html-header.twig' %}
+   {% include 'html-header.twig' %}
 {% endblock %}
 
-<body class="bg-white font-medium tracking-tight text-neutral-800 {{body_class}}">
+<body class="bg-white font-medium tracking-tight text-neutral-800 overflow-x-hidden {{body_class}}">
 
-	{% block header %}
-		{% include 'header.twig' %}
-	{% endblock %}
+   <div id="overlay" class="pointer-events-none invisible fixed inset-0 z-10 bg-black opacity-30"></div>
 
-	<main id="content" role="main">
-		{% block content %}
-			No content to display
-		{% endblock %}
-	</main>
+   {% block header %}
+      {% include 'header.twig' %}
+   {% endblock %}
 
-	{% block footer %}
-		{% include 'footer.twig' %}
-	{% endblock %}
+   <main id="content" role="main">
+      {% block content %}
+         No content to display
+      {% endblock %}
+   </main>
 
-	{% include 'menus/scrolling-menu.twig' %}
-	{% include 'menus/offscreen-menu.twig' with {'items': master.get_items} %}
+   {% block footer %}
+      {% include 'footer.twig' %}
+   {% endblock %}
 
-	<script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-	{{ function('wp_footer') }}
+   <div class="offscreen">
+      {% include 'menus/scrolling-menu.twig' %}
+      {% include 'menus/offscreen-menu.twig' with {'items': master.get_items} %}
+      {% include 'widgets/widget-calculator.twig' %}
+   </div>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.3.0/swiper-bundle.css">
+   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+   {{ function('wp_footer') }}
 
 </body></html>

@@ -1,39 +1,26 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<div class="content-wrapper">
-		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-			<img src="{{ post.thumbnail.src|resize(1200, 300) }}">
-			<section class="article-content">
-				<h1 class="article-h1">{{ post.title }}</h1>
-				<a href="{{ post.link }}">{{ _e('edit') }}</a>
-				<p class="blog-author">
-					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> <time datetime="{{ post.date|date('Y-m-d H:i:s') }}">{{ post.date }}</time>
-				</p>
-				<div class="article-body">
+
+		<article id="post-{{ post.ID }}" class="post-entry post-type-{{ post.post_type }} bg-white px-14 pt-48 sm:px-8 sm:pt-36">
+
+			<section class="mx-auto max-w-post-wrap">
+				<div class="max-w-post mx-auto">
+					<a href="{{site.url}}/about-us/resources/blog/" class="inline-flex items-center justify-center rounded border border-neutral-200 py-3 px-6 transition-colors duration-300 ease-in-out hover:border-neutral-100 hover:bg-neutral-100">
+						<ion-icon name="arrow-back-outline" class="mr-2 mt-px"></ion-icon> Blog
+					</a>
+					<h1 class="mt-6 mb-16 text-left text-6xl font-bold tracking-tighter text-primary-900 lg:text-6xl sm:mb-12 sm:text-5xl">{{ post.title|trim('￼') }}</h1>
+				</div>
+				<img src="{{ post.thumbnail.src }}" class="w-full h-[28rem] object-cover rounded-md">
+			</section>
+
+			<section class="mx-auto max-w-post pt-16 pb-24">
+				<time datetime="{{ post.date|date('Y-m-d H:i:s') }}" class="block mb-6 font-bold uppercase text-neutral-500">{{ post.date }}</time>
+				<div class="text-lg">
 					{{post.content}}
 				</div>
 			</section>
 
-			<!-- comment box -->
-			<section class="comment-box">
-				<!-- comments -->
-				<div class="comments">
-				    {% if post.comments %}
-					<h3> comments </h3>
-					{% for cmt in post.comments %}
-					    {% include "comment.twig" with {comment:cmt} %}
-					{% endfor %}
-				    {% endif %}
-				</div>
-
-				{% if post.comment_status == "closed" %}
-					<p> comments for this post are closed </p>
-				{% else %}
-				    <!-- comment form -->
-				    {% include "comment-form.twig" %}
-				{% endif %}
-			</section>
 		</article>
-	</div><!-- /content-wrapper -->
+
 {% endblock %}

@@ -1,9 +1,16 @@
-<article class="tease tease-{{post.post_type}}" id="tease-{{post.ID}}">
-	{% block content %}
-		<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
-		<p>{{post.preview}}</p>
+<article id="tease-{{post.ID}}" class="tease tease-{{post.post_type}}">
+   <a href="{{post.link}}" class="flex cursor-pointer items-start gap-10 rounded-md p-8 transition-shadow hover:shadow-md hover:shadow-neutral-100 lg:gap-x-7 lg:p-6 sm:flex-col sm:gap-6">
 		{% if post.get_thumbnail %}
-			<img src="{{post.thumbnail.src}}" />
+      <img src="{{post.thumbnail}}" alt="" class="h-52 w-1/2 rounded object-cover sm:w-full"/>
 		{% endif %}
-	{% endblock %}
+      <div class="w-1/2 sm:w-full">
+         <div class="inline-flex rounded bg-secondary-800 py-1 px-2 text-sm font-bold uppercase text-white">
+            {{post.category}}
+         </div>
+         <h6 class="mt-4 border-b border-neutral-200 pb-6 text-2xl font-bold tracking-tighter lg:text-xl md:text-2xl">
+            {{post.title|trim('￼')}}
+         </h6>
+         <time datetime="{{ post.date|date('Y-m-d H:i:s') }}" class="mt-4 block text-sm font-bold uppercase text-neutral-500">{{ post.date }}</time>
+      </div>
+   </a>
 </article>

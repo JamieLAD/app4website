@@ -1,11 +1,15 @@
 {% extends "base.twig" %}
 
 {% block content %}
-	<h2>{{ foo }}</h2>
-	<p>{{ qux }}</p>
-	{% for post in posts %}
-		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-	{% endfor %}
-	
-	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+   {% include 'heros/hero-blog.twig' with {'props': {'title': 'The App4 Blog', 'badge': 'Blog Articles'}} %}
+
+   <section class="py-32 px-8 lg:py-14">
+      <div class="mx-auto max-w-6xl">
+         {% include 'partial/articles.twig' with {'posts': posts} %}
+      </div>
+   </section>
+
+   {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 2, end_size: 1}) } %}
+
 {% endblock %}

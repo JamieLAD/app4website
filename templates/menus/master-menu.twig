@@ -8,54 +8,39 @@
 				{% if item.children %}
 					<div class="invisible absolute top-30 left-0 right-0 z-10 mx-auto w-full border-t border-primary-700 bg-primary-900 opacity-0 group-hover:visible group-hover:opacity-100">
 						<div class="mx-auto flex max-w-5xl items-start space-x-4 py-10 px-8">
-							{% for child in item.children %}
-								<div class="flex flex-1 flex-col justify-center py-2 text-white">
-									<h6 class="mb-5 font-bold">{{ child.title }}</h6>
-									{% if child.children %}
-										<nav class="flex flex-col items-start space-y-3">
-											{% for third in child.children %}
-												<a class="font-normal text-white opacity-50 transition-opacity hover:opacity-100" target="{{ third.target }}" href="{{ third.link }}">
-													{{third.title}}
-												</a>
-											{% endfor %}
-										</nav>
-									{% endif %}
+							<!--About Us Dropdown-->
+							{% if 'About Us' in item.title %}
+								<div class="flex flex-col justify-center items-start py-2 text-white w-1/5">
+									{% for child in item.children %}
+										<a href="{{child.link}}" target="{{child.target}}" class="font-normal text-white mb-2 hover:underline">{{ child.title }}</a>
+										{% for third in child.children %}
+											<a class="font-normal text-white opacity-50 transition-opacity hover:opacity-100" target="{{ third.target }}" href="{{ third.link }}">
+												{{third.title}}
+											</a>
+										{% endfor %}
+									{% endfor %}
 								</div>
-							{% endfor %}
-							<div class="rounded-md bg-white p-6 lg:bottom-8 lg:-left-8 sm:hidden">
-								<h4 class="mb-1 text-3xl font-bold tracking-tighter">
-									Let's Compare
-								</h4>
-								<h6 class="block border-b border-gray-200 pb-6 text-base font-bold uppercase text-neutral-400">
-									Total Savings
-								</h6>
-								<div class="mt-6 w-56">
-									<div class="mb-3">
-										<h6 class="mb-1 text-sm font-bold">App4</h6>
-										<div class="relative h-2 w-full bg-neutral-200">
-											<span class="absolute left-0 top-0 block h-full w-[93%] bg-secondary-900"></span>
-										</div>
+								{% for post in posts|slice(0, 3) %}
+									{% include 'widgets/widget-post.twig' with {'post': post} %}
+								{% endfor %}
+							<!--Other Dropdowns-->
+							{% else %}
+								{% for child in item.children %}
+									<div class="flex flex-1 flex-col justify-center py-2 text-white">
+										<a href="{{child.link}}" target="{{child.target}}" class="mb-5 font-bold hover:underline">{{ child.title }}</a>
+										{% if child.children %}
+											<nav class="flex flex-col items-start space-y-3">
+												{% for third in child.children %}
+													<a class="font-normal text-white opacity-50 transition-opacity hover:opacity-100" target="{{ third.target }}" href="{{ third.link }}">
+														{{third.title}}
+													</a>
+												{% endfor %}
+											</nav>
+										{% endif %}
 									</div>
-									<div class="mb-3">
-										<h6 class="mb-1 text-sm font-bold">Just Eat</h6>
-										<div class="relative h-2 w-full bg-neutral-200">
-											<span class="absolute left-0 top-0 block h-full w-[53%] bg-secondary-900"></span>
-										</div>
-									</div>
-									<div class="mb-3">
-										<h6 class="mb-1 text-sm font-bold">Order Yoyo</h6>
-										<div class="relative h-2 w-full bg-neutral-200">
-											<span class="absolute left-0 top-0 block h-full w-[42%] bg-secondary-900"></span>
-										</div>
-									</div>
-									<div class="mb-3">
-										<h6 class="mb-1 text-sm font-bold">Flipdish</h6>
-										<div class="relative h-2 w-full bg-neutral-200">
-											<span class="absolute left-0 top-0 block h-full w-[41%] bg-secondary-900"></span>
-										</div>
-									</div>
-								</div>
-							</div>
+								{% endfor %}
+								{% include 'widgets/widget-comparison.twig' with {'props': {title: 'Let\'s Compare', subtitle: 'Total Savings', position: 'static'}} %}
+							{% endif %}
 						</div>
 					</div>
 				{% endif %}

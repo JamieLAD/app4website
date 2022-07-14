@@ -85,7 +85,31 @@ class App4 extends Timber\Site {
 	public function add_to_context( $context ) {
 		$logo = wp_get_attachment_image_url( get_theme_mod( 'custom_logo' ), 'full' );
 		$updates = 'Updates';
-
+		$reviews = 'Reviews';
+		$posts_per_page = 10;
+		global $paged;
+		if (!isset($paged) || !$paged){
+			$paged = 1;
+		}
+		$context = Timber::context();
+		$args = array(
+			'category__not_in' => [7, 5],
+			'posts_per_page' => $posts_per_page,
+			'paged' => $paged
+		);
+		$updates_args = array(
+			'category__in' => 5,
+			'posts_per_page' => $posts_per_page,
+			'paged' => $paged
+		);
+		$reviews_args = array(
+			'category__in' => 7,
+			'posts_per_page' => $posts_per_page,
+			'paged' => $paged
+		);
+		$context['posts'] = new Timber\PostQuery($args);
+		$context['updates_posts'] = new Timber\PostQuery($updates_args);
+		$context['reviews_posts'] = new Timber\PostQuery($reviews_args);
 		$context['foo']   = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
@@ -93,11 +117,6 @@ class App4 extends Timber\Site {
 		$context['master'] = new Timber\Menu( 'Master Menu' );
 		$context['site']  = $this;
 		$context['options'] = get_fields('option');
-		$context['updates'] = $updates;
-		$context['updates_posts'] = Timber::get_posts([
-			'category_name' => $updates,
-			'posts_per_page' => 4
-		]);
 		return $context;
 	}
 
@@ -176,7 +195,7 @@ class App4 extends Timber\Site {
 	}
 
 	public function loadScripts() {
-        wp_enqueue_script( 'combined.js', get_template_directory_uri() . '/static/combined.js', array(), '1.0.0', true );
+        wp_enqueue_script( 'bundle.js', get_template_directory_uri() . '/static/bundle.js', array(), '1.0.0', true );
 	}
 
 	public function my_acf_init() {
@@ -315,6 +334,30 @@ class App4 extends Timber\Site {
 				'description'		=> __('A grid-style customer reviews section'),
 				'render_callback'	=> array( $this, 'my_acf_block_render_callback'),
 				'keywords'			=> array('customer', 'reviews')
+			));
+
+			acf_register_block(array(
+				'name'				=> 'slider',
+				'title'				=> __('Slider'),
+				'description'		=> __('Adds a slider'),
+				'render_callback'	=> array( $this, 'my_acf_block_render_callback'),
+				'keywords'			=> array('slider')
+			));
+
+			acf_register_block(array(
+				'name'				=> 'features-accordion',
+				'title'				=> __('Features Accordion'),
+				'description'		=> __('Accordion style features'),
+				'render_callback'	=> array( $this, 'my_acf_block_render_callback'),
+				'keywords'			=> array('features', 'accordion')
+			));
+
+			acf_register_block(array(
+				'name'				=> 'image-marquee',
+				'title'				=> __('Image Marquee'),
+				'description'		=> __('Infinitely horizontal scrolling images, usually used for logos'),
+				'render_callback'	=> array( $this, 'my_acf_block_render_callback'),
+				'keywords'			=> array('image', 'marquee')
 			));
 
 		}

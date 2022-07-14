@@ -1,8 +1,8 @@
-<section id="updates" class="py-32 px-8 lg:py-14">
+<section class="py-32 px-8 lg:py-14">
    <div class="mx-auto max-w-6xl">
       <div class="mb-4 flex justify-center">
          <h6 class="rounded bg-secondary-700 py-2 px-4 text-lg font-bold uppercase tracking-tighter text-primary-900">
-            {{updates}}
+            Updates
          </h6>
       </div>
       <h2 class="mx-auto mb-16 max-w-lg text-center text-5xl font-bold tracking-tighter text-primary-900 sm:mb-10">
@@ -11,28 +11,7 @@
          {% endif %}
       </h2>
 
-      {% if updates_posts %}
-      <div class="grid grid-cols-2 items-start gap-8 lg:gap-2 md:grid-cols-1">
-
-         {% for post in updates_posts %}
-            <article class="post-{{post.id}}">
-               <a href="{{post.link}}" class="flex cursor-pointer items-start gap-10 rounded-md p-8 transition-shadow hover:shadow-md hover:shadow-neutral-100 lg:gap-x-7 lg:p-6 sm:flex-col sm:gap-6">
-                  <img src="{{post.thumbnail}}" alt="" class="h-52 w-1/2 rounded object-cover sm:w-full"/>
-                  <div class="w-1/2 sm:w-full">
-                     <div class="inline-flex rounded bg-secondary-900 py-1 px-2 text-sm font-bold uppercase text-white">
-                        {{post.category}}
-                     </div>
-                     <h6 class="mt-4 border-b border-neutral-200 pb-6 text-2xl font-bold tracking-tighter lg:text-xl md:text-2xl">
-                        {{post.title}}
-                     </h6>
-                     <div class="mt-4 text-sm font-bold uppercase text-neutral-500">
-                        {{post.date}}
-                     </div>
-                  </div>
-               </a>
-            </article>
-         {% endfor %}
-
-      {% endif %}
+      {% include 'partial/articles.twig' with {'posts': updates_posts, 'maxPosts': 4} %}
+      
    </div>
 </section>

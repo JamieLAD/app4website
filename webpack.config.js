@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   entry: "./src/script.js",
   output: {
-    filename: "combined.js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "static"),
   },
   module: {

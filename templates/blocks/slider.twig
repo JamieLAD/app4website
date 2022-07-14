@@ -1,0 +1,22 @@
+<section class="grid grid-cols-container py-32 pl-14 lg:px-14 lg:py-16 sm:px-8 lg:block">
+
+   {% if fields.slider_title or fields.slider_text %}
+      <div class="col-start-2 col-end-3 grid grid-cols-2 gap-8 md:grid-cols-1">
+         <h2 class="text-5xl font-bold tracking-tighter text-primary-900 col-span-1">{{ fields.slider_title }}</h2>
+         <p class="text-xl lg:text-lg col-span-1">{{ fields.slider_text }}</p>
+      </div>
+   {% endif %}
+
+   {% if fields.slider_images %}
+   <div class="col-start-2 col-end-4 mt-16 lg:grid-col-">
+      <div class="swiper previews-slider overflow-visible">
+         <div class="swiper-wrapper">
+            {% for image in fields.slider_images %}
+               <div class="swiper-slide"><img src="{{Image(image).src}}" alt=""></div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   {% endif %}
+
+</section>

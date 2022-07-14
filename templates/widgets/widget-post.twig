@@ -1,0 +1,13 @@
+<article class="post-{{post.id}} flex-1 border border-primary-700 rounded-md ml-6 will-change-transform transition-transform duration-300 hover:-translate-y-2">
+   <a href="{{post.link}}" class="block cursor-pointer p-6">
+      <div class="inline-flex rounded bg-secondary-900 py-1 px-2 text-xs font-bold uppercase text-white">
+         {{post.category}}
+      </div>
+      <h6 class="mt-4 text-white text-xl leading-tight lg:text-xl md:text-2xl line-clamp-3">
+         {{post.title|trim('￼')}}
+      </h6>
+      <time datetime="{{ post.date|date('Y-m-d H:i:s') }}" class="block mt-4 pt-4 text-sm font-bold uppercase text-white border-t border-primary-700">
+         {{ post.date }}
+      </time>
+   </a>
+</article>

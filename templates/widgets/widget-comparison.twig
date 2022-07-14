@@ -1,4 +1,4 @@
-<div class="absolute bottom-12 -left-12 rounded-md bg-white p-6 lg:bottom-8 lg:-left-8 sm:hidden">
+<div class="{% if not props.position == 'static' %}absolute bottom-12 -left-12 {% endif %}rounded-md bg-white p-6 lg:bottom-8 lg:-left-8 sm:hidden">
    <h4 class="mb-1 text-3xl font-bold tracking-tighter">
       {{props.title}}
    </h4>
@@ -9,25 +9,25 @@
       <div class="mb-3">
          <h6 class="mb-1 text-sm font-bold">App4</h6>
          <div class="relative h-2 w-full bg-neutral-200">
-            <span class="absolute left-0 top-0 block h-full w-[93%] bg-secondary-900"></span>
+            <span class="absolute left-0 top-0 block h-full w-[93%] bg-secondary-800"></span>
          </div>
       </div>
       <div class="mb-3">
          <h6 class="mb-1 text-sm font-bold">Just Eat</h6>
          <div class="relative h-2 w-full bg-neutral-200">
-            <span class="absolute left-0 top-0 block h-full w-[53%] bg-secondary-900"></span>
+            <span class="absolute left-0 top-0 block h-full w-[53%] bg-secondary-800"></span>
          </div>
       </div>
       <div class="mb-3">
          <h6 class="mb-1 text-sm font-bold">Order Yoyo</h6>
          <div class="relative h-2 w-full bg-neutral-200">
-            <span class="absolute left-0 top-0 block h-full w-[42%] bg-secondary-900"></span>
+            <span class="absolute left-0 top-0 block h-full w-[42%] bg-secondary-800"></span>
          </div>
       </div>
       <div class="mb-3">
          <h6 class="mb-1 text-sm font-bold">Flipdish</h6>
          <div class="relative h-2 w-full bg-neutral-200">
-            <span class="absolute left-0 top-0 block h-full w-[41%] bg-secondary-900"></span>
+            <span class="absolute left-0 top-0 block h-full w-[41%] bg-secondary-800"></span>
          </div>
       </div>
    </div>

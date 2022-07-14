@@ -1,0 +1,15 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+   {% include 'heros/hero-blog.twig' with {'props': {'title': 'App4 Updates', 'badge': 'Latest Updates'}} %}
+
+   <section class="py-32 px-8 lg:py-14">
+      <div class="mx-auto max-w-6xl">
+         {% include 'partial/articles.twig' with {'posts': updates_posts} %}
+      </div>
+   </section>
+
+   {% include 'partial/pagination.twig' with { 'posts': updates_posts, pagination: updates_posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+{% endblock %}

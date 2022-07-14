@@ -39,7 +39,8 @@ module.exports = {
           700: '#416262',
         },
         secondary: {
-          900: '#ADC9A6',
+          900: '#84A17D',
+          800: '#ADC9A6',
           700: '#E6EFE4',
         },
       },
@@ -52,6 +53,9 @@ module.exports = {
       },
       maxWidth: {
         '5xl': '66.25rem',
+        post: '38.75rem',
+        'post-wrap': '52.5rem',
+        calculator: '17.5rem',
       },
       backgroundImage: {
         'img-usericon': "url('./assets/img/user-icon.svg')",
@@ -66,9 +70,13 @@ module.exports = {
       gridTemplateColumns: {
         footer: '2.5fr 1fr 1fr 1fr',
         'footer-mob': '1.75fr 1fr 1fr 1fr',
+        container: '1fr 66.25rem 1fr',
       },
       height: {
         30: '7.5rem',
+      },
+      width: {
+        '10vw': '10vw',
       },
       inset: {
         30: '7.5rem',
@@ -79,8 +87,19 @@ module.exports = {
       boxShadow: {
         form: '2px 2px 15px rgba(0, 0, 0, 0.05)',
       },
+      willChange: {
+        'max-height': 'max-height',
+      },
+      keyframes: {
+        scrolling: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
+      animation: {
+        scrolling: 'scrolling 170s linear infinite',
+      },
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],
-  safelist: process.env.NODE_ENV === 'development' ? [{ pattern: /.*/ }] : [],
 };

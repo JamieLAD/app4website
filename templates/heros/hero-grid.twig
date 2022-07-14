@@ -1,4 +1,4 @@
-<section id="hero" class="bg-white px-14 pt-60 sm:px-8 sm:pt-36">
+<section class="bg-white px-14 pt-60 sm:px-8 sm:pt-36">
 	<div class="mx-auto grid max-w-5xl place-items-center">
 
       {% if fields.hero_badge %}
@@ -14,15 +14,16 @@
       {% endif %}
 
       {% if fields.hero_grid %}
-		<div class="mb-16 grid w-full grid-cols-4 items-start gap-x-10 lg:grid-cols-3 sm:grid-cols-1">
+		{% set c = fields.hero_grid|length %}
+		<div class="grid w-full grid-cols-{{c}} items-start gap-x-10 {% if c > 3 %}lg:grid-cols-3{% endif %} sm:grid-cols-1">
          {% for image in fields.hero_grid %}
-            <img src="{{Image(image.hero_grid_image).src}}" alt="" class="h-72 w-full rounded object-cover {% if loop.index in [2, 3] %}sm:hidden{% endif %}{% if loop.index == 4 %}lg:hidden{% endif %}"/>
+            <img src="{{Image(image.hero_grid_image).src}}" alt="" class="w-full rounded object-cover {% if loop.index in [2, 3] %}sm:hidden{% endif %}{% if loop.index == 4 %}lg:hidden{% endif %}"/>
          {% endfor %}
 		</div>
       {% endif %}
 
 		{% if fields.hero_stats %}
-		<div class="grid h-44 w-full grid-cols-3 rounded-md border border-neutral-200 sm:h-auto sm:grid-cols-1">
+		<div class="grid mt-16 h-44 w-full grid-cols-3 rounded-md border border-neutral-200 sm:h-auto sm:grid-cols-1">
 			{% set hero_stats = post.meta('group') %}
 			{% for stat in fields.hero_stats.stats_tile %}
 			<div class="flex h-full flex-col justify-center space-y-1 p-8 text-center {% if loop.index == 2 %}border-x border-neutral-200 sm:border-x-0 sm:border-y{% endif %}">

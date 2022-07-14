@@ -1,45 +1,50 @@
-<nav id="offscreen-nav" class="fixed top-0 bottom-0 -right-full z-20 w-96 bg-primary-900 text-white transition-all duration-500">
-   <div class="flex justify-end p-10">
+<nav id="offscreen-nav" class="fixed top-0 bottom-0 -right-full z-20 w-80 bg-primary-900 text-white transition-all duration-500 h-full overflow-scroll">
+   <div class="flex justify-end p-10 sticky top-0 bg-primary-900 z-10">
       <a href="#" class="menu-close flex items-center uppercase">
          Close
          <ion-icon name="close-circle-outline" class="ml-1 text-3xl"></ion-icon>
       </a>
    </div>
    {% if items %}
-   <ul>
-      {% for item in items %}
-      <li class="dropdown-parent border-y border-primary-700">
-         <a href="#" class="flex items-center py-6 px-8 transition-colors hover:bg-primary-800">
-            {{item.title}}
-            {% if item.children %}
-            <ion-icon name="chevron-down-outline" class="dropdown-arrow pointer-events-none ml-2 text-lg transition-transform"></ion-icon>
-            {% endif %}
-         </a>
-         {% if item.children %}
-         <ul class="dropdown max-h-0 overflow-hidden">
-            {% for child in item.children %}
-            <li class="{% if child.children %}dropdown-parent {% endif %}border-t border-primary-700">
+      <ul>
+         {% for item in items %}
+            <li class="{% if item.children %}dropdown-parent {% endif %}border-y border-primary-700">
                <a href="#" class="flex items-center py-6 px-8 transition-colors hover:bg-primary-800">
-                  {{child.title}}
-                  {% if child.children %}
-                  <ion-icon name="chevron-down-outline" class="dropdown-arrow pointer-events-none ml-2 text-lg transition-transform"></ion-icon>
+                  {{item.title}}
+                  {% if item.children %}
+                     <ion-icon name="chevron-down-outline" class="dropdown-arrow pointer-events-none ml-2 text-lg transition-transform"></ion-icon>
                   {% endif %}
                </a>
-               {% if child.children %}
-               <ul class="dropdown max-h-0 overflow-hidden">
-                  {% for third in child.children %}
-                  <li class="border-y border-primary-700">
-                     <a href="{{third.link}}" class="block py-6 px-8 transition-colors hover:bg-primary-800">{{third.title}}</a>
-                  </li>
-                  {% endfor %}
-               </ul>
+               {% if item.children %}
+                  <ul class="dropdown max-h-0 overflow-hidden">
+                     <li class="border-t border-primary-700">
+                        <a href="{{item.link}}" class="flex items-center py-6 px-8 transition-colors hover:bg-primary-800">
+                           {{item.title}}
+                        </a>
+                     </li>
+                     {% for child in item.children %}
+                        <li class="{% if child.children %}dropdown-parent {% endif %}border-t border-primary-700">
+                           <a href="{{child.link}}" class="flex items-center py-6 px-8 transition-colors hover:bg-primary-800">
+                              {{child.title}}
+                              {% if child.children %}
+                                 <ion-icon name="chevron-down-outline" class="dropdown-arrow pointer-events-none ml-2 text-lg transition-transform"></ion-icon>
+                              {% endif %}
+                           </a>
+                           {% if child.children %}
+                              <ul class="dropdown max-h-0 overflow-hidden">
+                                 {% for third in child.children %}
+                                    <li class="border-y border-primary-700">
+                                       <a href="{{third.link}}" class="block py-6 px-8 transition-colors hover:bg-primary-800">{{third.title}}</a>
+                                    </li>
+                                 {% endfor %}
+                              </ul>
+                           {% endif %}
+                        </li>
+                     {% endfor %}
+                  </ul>
                {% endif %}
             </li>
-            {% endfor %}
-         </ul>
-         {% endif %}
-      </li>
-      {% endfor %}
-   </ul>
+         {% endfor %}
+      </ul>
    {% endif %}
 </nav>
